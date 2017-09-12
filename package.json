@@ -1,0 +1,20 @@
+{
+  "name": "Bangazon-Api",
+  "version": "1.0.0",
+  "description": "This is an API for Bangazon LLC. This API will allow user to GET/POST/PUT and (sometimes) DELETE items from the Bangazon Database. Before you can utilize the database, there are a few things you need to make sure you have installed.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lethal-Lemurs/Bangazon-Api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lethal-Lemurs/Bangazon-Api/issues"
+  },
+  "homepage": "https://github.com/Lethal-Lemurs/Bangazon-Api#readme"
+}
