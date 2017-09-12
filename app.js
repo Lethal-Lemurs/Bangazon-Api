@@ -6,7 +6,7 @@ require('dotenv').config();
 
 let routes = require('./routes/');
 
-const logParams = (req, res, next) => {
+const log_params = (req, res, next) => {
     console.log("Middleware function awesomeness");
     // console.log('request', req);
     console.log('req.params', req.params.id);
@@ -14,7 +14,7 @@ const logParams = (req, res, next) => {
     next();
 };
 
-app.use(logParams);
+app.use(log_params);
 app.use('/api/v1/', routes);
 
 app.use((req, res, next) => {
