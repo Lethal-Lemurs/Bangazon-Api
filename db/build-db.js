@@ -8,6 +8,8 @@ const { generateDepartments } = require('../data/departments-data');
 const { generatePrograms } = require('../data/programs-data');
 const { generateComputers } = require('../data/computers-data');
 const { generateUsers } = require('../data/users-data');
+const { generateProductType } = require('../data/product-type-data');
+const { generateTransactionType } = require('../data/transaction-type-data');
 
 let employees = generateEmployees(employeeTypes);
 let departments = generateDepartments();
@@ -15,6 +17,9 @@ let programs = generatePrograms();
 let computers = generateComputers();
 
 let user = generateUsers();
+let productType = generateProductType();
+let transactionType = generateTransactionType();
+console.log(transactionType);
 
 db.serialize(function() {
   db.run(`DROP TABLE IF EXISTS employees`);
@@ -22,6 +27,7 @@ db.serialize(function() {
   db.run(`DROP TABLE IF EXISTS programs`);
   db.run(`DROP TABLE IF EXISTS computers`);
   db.run(`DROP TABLE IF EXISTS user`);
+  db.run(`DROP TABLE IF EXISTS productType`);
 
   db.run(`CREATE TABLE IF NOT EXISTS employees (
     emp_id INTEGER NOT NULL PRIMARY KEY,
@@ -58,7 +64,7 @@ db.serialize(function() {
     user_id INTEGER NOT NULL PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
-    phone INT NOT NULL,
+    phone TEXT NOT NULL,
     email TEXT NOT NULL,
     address_street TEXT NOT NULL,
     address_city TEXT NOT NULL,
@@ -66,7 +72,16 @@ db.serialize(function() {
     address_zip INT NOT NULL)`
   );
 
-  
+  db.run(`CREATE TABLE IF NOT EXISTS productType (
+    productType_id INTEGER NOT NULL PRIMARY KEY,
+    type TEXT NOT NULL)`
+  );
+
+  db.run(`CREATE TABLE IF NOT EXISTS transactionType (
+    transactionType_id INTEGER NOT NULL PRIMARY KEY,
+    type TEXT NOT NULL)`
+  );
+
   employees.forEach( ({first_name, last_name, phone, position_title }) => {
     db.run(`INSERT INTO employees (first_name, last_name, phone, position_title)
     VALUES ("${first_name}", "${last_name}", ${phone}, "${position_title}") `);
@@ -90,6 +105,16 @@ db.serialize(function() {
   // ******* USER TABLES
   user.forEach( ({first_name, last_name, phone, email, address_street, address_city, address_state, address_zip}) => {
     db.run(`INSERT INTO user (first_name, last_name, phone, email, address_street, address_city, address_state, address_zip)
-      VALUES ("${first_name}", "${last_name}", ${phone}, "${email}", "${address_street}", "${address_city}", "${address_state}", ${address_zip}) `);
+      VALUES ("${first_name}", "${last_name}", "${phone}", "${email}", "${address_street}", "${address_city}", "${address_state}", ${address_zip}) `);
+  });
+
+  productType.forEach( ({type}) => {
+    db.run(`INSERT INTO productType (type)
+    VALUES ("${type}")`);
+  });
+
+  transactionType.forEach( ({type}) => {
+    db.run(`INSERT INTO transactionType (type)
+    VALUES ("${type}")`);
   });
 });
