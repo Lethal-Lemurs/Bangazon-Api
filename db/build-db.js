@@ -1,7 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('bangazonStore.sqlite');
 
-// const { productTypes } = require('../data/product-types');
 const { employeeTypes } = require('../data/employee-types');
 
 const { generateEmployees } = require('../data/employees-data');
@@ -16,7 +15,6 @@ let programs = generatePrograms();
 let computers = generateComputers();
 
 let user = generateUsers();
-console.log('users', user);
 
 db.serialize(function() {
   db.run(`DROP TABLE IF EXISTS employees`);
