@@ -1,0 +1,7 @@
+{
+  "orderStatus": [
+    {"status": "shipped"},
+    {"status": "recieved"},
+    {"status": "en route"}
+  ]
+}
