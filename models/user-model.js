@@ -8,9 +8,8 @@ const db = new sqlite3.Database('bangazonStore.sqlite');
 module.exports = {
     get_all: () => {
         return new Promise((resolve, reject) => {
-            db.all(
-                //SQL STUFF
-                , (err, user_data) => {
+            db.all(`SELECT * FROM user`,
+                (err, user_data) => {
                     if (err) return reject(err);
                     resolve(user_data);
                 });
