@@ -16,8 +16,9 @@ module.exports = {
     });
   },
   get_one: (id) => {
+      console.log("id?", id);
     return new Promise((resolve, reject) => {
-      db.get(`SELECT user.user_id FROM user WHERE user.user_id = ${id}`,
+      db.get(`SELECT * FROM user WHERE user_id = ${id}`,
         (err, user) => {
           if (err) return reject(err);
           resolve(user);
