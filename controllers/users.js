@@ -30,5 +30,5 @@ module.exports.post_one_user = ({body}, res, next) => {
             console.log("getting stuck in catch");
             next(err)
             
-})
+});
 }

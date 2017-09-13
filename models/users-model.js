@@ -8,7 +8,7 @@ const db = new sqlite3.Database('./db/bangazonStore.sqlite');
 module.exports = {
   get_all: () => {
     return new Promise((resolve, reject) => {
-      db.all(`SELECT * FROM user`,
+      db.all(`SELECT * FROM users`,
         (err, user_data) => {
           if (err) return reject(err);
           resolve(user_data);
@@ -18,7 +18,7 @@ module.exports = {
   get_one: (id) => {
     console.log("id?", id);
     return new Promise((resolve, reject) => {
-      db.get(`SELECT * FROM user WHERE user_id = ${id}`,
+      db.get(`SELECT * FROM users WHERE user_id = ${id}`,
         (err, user) => {
           if (err) return reject(err);
           resolve(user);
