@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(__dirname + 'bangazonStore.sqlite');
+const db = new sqlite3.Database(__dirname + '/bangazonStore.sqlite');
 
 const { employeeTypes } = require('../data/employee-types');
 const { orderStatus } = require('../data/order-status');

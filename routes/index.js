@@ -6,7 +6,7 @@ const router = Router();
 router.use(require('./users-route'));
 // router.use(require('./departments'));
 // router.use(require('./computers'));
-// router.use(require('./orders'));
+router.use(require('./orders-route'));
 // router.use(require('./payment-type'));
 // router.use(require('./products'));
 // router.use(require('./product-type'));
