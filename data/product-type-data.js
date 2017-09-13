@@ -2,16 +2,16 @@
 
 const faker = require('faker');
 
-module.exports.generateProductType = () => {
-  let productType = [];
+module.exports.generateProductTypes = () => {
+  let productTypes = [];
 
   for (let i = 0; i < 10; i++) {
     let type = faker.commerce.productMaterial();
 
-    productType.push({
+    productTypes.push({
       type
     });
   }
 
-  return productType;
+  return productTypes;
 };

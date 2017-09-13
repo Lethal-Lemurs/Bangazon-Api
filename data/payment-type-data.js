@@ -2,16 +2,16 @@
 
 const faker = require('faker');
 
-module.exports.generatePaymentType = () => {
-  let paymentType = [];
+module.exports.generatePaymentTypes = () => {
+  let paymentTypes = [];
 
   for (let i = 0; i < 10; i++) {
     let account_number = faker.finance.account();
 
-    paymentType.push({
+    paymentTypes.push({
       account_number
     });
   }
 
-  return paymentType;
+  return paymentTypes;
 };

@@ -2,15 +2,15 @@
 
 const faker = require('faker');
 
-module.exports.generateProduct = () => {
-  let product = [];
+module.exports.generateProducts = () => {
+  let products = [];
 
   for (let i = 0; i < 10; i++) {
     let title = faker.commerce.productName();
     let price = faker.commerce.price();
     let description = faker.company.catchPhraseDescriptor();
 
-    product.push({
+    products.push({
       title,
       price,
       description
@@ -18,5 +18,5 @@ module.exports.generateProduct = () => {
     });
   }
 
-  return product;
+  return products;
 };

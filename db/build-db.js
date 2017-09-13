@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('bangazonStore.sqlite');
+const db = new sqlite3.Database(__dirname + 'bangazonStore.sqlite');
 
 const { employeeTypes } = require('../data/employee-types');
 const { orderStatus } = require('../data/order-status');
@@ -9,23 +9,22 @@ const { generateDepartments } = require('../data/departments-data');
 const { generatePrograms } = require('../data/programs-data');
 const { generateComputers } = require('../data/computers-data');
 const { generateUsers } = require('../data/users-data');
-const { generateProductType } = require('../data/product-type-data');
+const { generateProductTypes } = require('../data/product-type-data');
 const { generateTransactionType } = require('../data/transaction-type-data');
-const { generateProduct } = require('../data/product-data');
+const { generateProducts } = require('../data/product-data');
 const { generateOrders } = require('../data/order-data');
-const { generatePaymentType } = require('../data/payment-type-data');
+const { generatePaymentTypes } = require('../data/payment-type-data');
 
 let employees = generateEmployees(employeeTypes);
 let departments = generateDepartments();
 let programs = generatePrograms();
 let computers = generateComputers();
 
-let user = generateUsers();
-let productType = generateProductType();
+let users = generateUsers();
+let productTypes = generateProductTypes();
 let transactionType = generateTransactionType();
-let product = generateProduct();
-let paymentType = generatePaymentType();
-console.log(paymentType)
+let products = generateProducts();
+let paymentTypes = generatePaymentTypes();
 let orders = generateOrders(orderStatus);
 
 db.serialize(function() {
@@ -33,10 +32,10 @@ db.serialize(function() {
   db.run(`DROP TABLE IF EXISTS departments`);
   db.run(`DROP TABLE IF EXISTS programs`);
   db.run(`DROP TABLE IF EXISTS computers`);
-  db.run(`DROP TABLE IF EXISTS user`);
-  db.run(`DROP TABLE IF EXISTS productType`);
-  db.run(`DROP TABLE IF EXISTS product`);
-  db.run(`DROP TABLE IF EXISTS paymentType`);
+  db.run(`DROP TABLE IF EXISTS users`);
+  db.run(`DROP TABLE IF EXISTS productTypes`);
+  db.run(`DROP TABLE IF EXISTS products`);
+  db.run(`DROP TABLE IF EXISTS paymentTypes`);
   db.run(`DROP TABLE IF EXISTS orders`);
 
   db.run(`CREATE TABLE IF NOT EXISTS employees (
@@ -69,8 +68,8 @@ db.serialize(function() {
       FOREIGN KEY (employee_id) REFERENCES employees(emp_id) )`
   );
 
-  // ******* USER TABLES
-  db.run(`CREATE TABLE IF NOT EXISTS user (
+  // ******* USERs TABLES
+  db.run(`CREATE TABLE IF NOT EXISTS users (
     user_id INTEGER NOT NULL PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
@@ -82,18 +81,18 @@ db.serialize(function() {
     address_zip INT NOT NULL)`
   );
 
-  db.run(`CREATE TABLE IF NOT EXISTS productType (
+  db.run(`CREATE TABLE IF NOT EXISTS productTypes (
     productType_id INTEGER NOT NULL PRIMARY KEY,
     type TEXT NOT NULL)`
   );
 
-  db.run(`CREATE TABLE IF NOT EXISTS product (
+  db.run(`CREATE TABLE IF NOT EXISTS products (
     product_id INTEGER NOT NULL PRIMARY KEY,
     title TEXT NOT NULL,
     price TEXT NOT NULL,
     description TEXT NOT NULL,
     seller_id INT NULL,
-      FOREIGN KEY (seller_id) REFERENCES user(user_id) )`
+      FOREIGN KEY (seller_id) REFERENCES users(user_id) )`
   );
 
   db.run(`CREATE TABLE IF NOT EXISTS transactionType (
@@ -101,12 +100,12 @@ db.serialize(function() {
     type TEXT NOT NULL)`
   );
 
-  db.run(`CREATE TABLE IF NOT EXISTS paymentType (
+  db.run(`CREATE TABLE IF NOT EXISTS paymentTypes (
     payType_id INTEGER NOT NULL PRIMARY KEY,
     account_number INT NOT NULL,
     user_id INT NULL,
     transactionType_id INT NULL,
-      FOREIGN KEY (user_id) REFERENCES user(user_id),
+      FOREIGN KEY (user_id) REFERENCES users(user_id),
       FOREIGN KEY (transactionType_id) REFERENCES transactionType(tranType_id))`
   );
 
@@ -116,8 +115,8 @@ db.serialize(function() {
     order_status TEXT NOT NULL,
     buyer_id INT NULL,
     paymentType_id TEXT NULL,
-      FOREIGN KEY (buyer_id) REFERENCES user(user_id),
-      FOREIGN KEY (paymentType_id) REFERENCES paymentType(payType_id))`
+      FOREIGN KEY (buyer_id) REFERENCES users(user_id),
+      FOREIGN KEY (paymentType_id) REFERENCES paymentTypes(payType_id))`
   );
 
   employees.forEach( ({first_name, last_name, phone, position_title}) => {
@@ -140,19 +139,19 @@ db.serialize(function() {
     VALUES ("${purchased_date}")`);
   });
   
-  // ******* USER TABLES
-  user.forEach( ({first_name, last_name, phone, email, address_street, address_city, address_state, address_zip}) => {
-    db.run(`INSERT INTO user (first_name, last_name, phone, email, address_street, address_city, address_state, address_zip)
+  // ******* USERs TABLES
+  users.forEach( ({first_name, last_name, phone, email, address_street, address_city, address_state, address_zip}) => {
+    db.run(`INSERT INTO users (first_name, last_name, phone, email, address_street, address_city, address_state, address_zip)
       VALUES ("${first_name}", "${last_name}", "${phone}", "${email}", "${address_street}", "${address_city}", "${address_state}", ${address_zip})`);
   });
 
-  productType.forEach( ({type}) => {
-    db.run(`INSERT INTO productType (type)
+  productTypes.forEach( ({type}) => {
+    db.run(`INSERT INTO productTypes (type)
     VALUES ("${type}")`);
   });
 
-  product.forEach( ({title, price, description}) => {
-    db.run(`INSERT INTO product (title, price, description)
+  products.forEach( ({title, price, description}) => {
+    db.run(`INSERT INTO products (title, price, description)
     VALUES ("${title}", ${price}, "${description}")`);
   });
 
@@ -161,8 +160,8 @@ db.serialize(function() {
     VALUES ("${type}")`);
   });
 
-  paymentType.forEach( ({account_number}) => {
-    db.run(`INSERT INTO paymentType (account_number)
+  paymentTypes.forEach( ({account_number}) => {
+    db.run(`INSERT INTO paymentTypes (account_number)
     VALUES (${account_number})`);
   });
 
