@@ -16,9 +16,17 @@ module.exports = {
     });
   },
   get_one: (id) => {
-      console.log("id?", id);
     return new Promise((resolve, reject) => {
       db.get(`SELECT * FROM orders WHERE order_id = ${id}`,
+        (err, order) => {
+          if (err) return reject(err);
+          resolve(order);
+        });
+    });
+  },
+  delete_one: (id) => {
+    return new Promise((resolve, reject) => {
+      db.get(`DELETE * FROM orders WHERE order_id = ${id}`,
         (err, order) => {
           if (err) return reject(err);
           resolve(order);
