@@ -32,5 +32,15 @@ module.exports = {
           resolve(order);
         });
     });
-  }
+  },
+  post_one: (new_order) => {
+    return new Promise((resolve, reject) => {
+      db.run(`INSERT INTO orders (order_date, order_status) VALUES(
+        "${new_order.order_date}", "${new_order.order_status}")`,
+        (err, order) => {
+          if (err) return reject(err);
+          resolve(order);
+        });
+    });
+}
 }

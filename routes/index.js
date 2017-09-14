@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
         // "departments": "api/v1/departments",
         // "computers": "api/v1/computers",
         "orders": "api/v1/orders",
+        "orders": "api/v1/orders/delete/id",
         // "paymentType": "api/v1/payment-type",
         // "products": "api/v1/products",
         "prodcutType": "api/v1/product-types",
