@@ -9,7 +9,7 @@ router.use(require('./users-route'));
 // router.use(require('./orders'));
 // router.use(require('./payment-type'));
 router.use(require('./products-route'));
-// router.use(require('./product-type'));
+router.use(require('./product-type-route'));
 // router.use(require('./training-program'));
 
 // this should be what a person using the api types in to the url to pull data
