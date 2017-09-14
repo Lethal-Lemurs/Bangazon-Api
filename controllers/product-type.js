@@ -1,6 +1,6 @@
 'use strict';
 
-const { get_all, get_one, post_one, put_one } = require('../models/product-type-model.js');
+const { get_all, get_one, post_one, put_one, delete_one } = require('../models/product-type-model.js');
 
 module.exports.get_product_types = (req, res, next) => {
   get_all()
@@ -36,6 +36,16 @@ module.exports.put_single_product_type = (req, res, next) => {
   put_one(req.params.id, req.body)
   .then((updated_prod_type) => {
     res.status(200).json(updated_prod_type);
+  })
+  .catch((err) => {
+    next(err);
+  })
+};
+
+module.exports.delete_single_product_type = ({ params: { id } }, res, next) => {
+  delete_one(id)
+  .then((prod_type) => {
+    res.status(200).json(prod_type);
   })
   .catch((err) => {
     next(err);
