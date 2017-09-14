@@ -1,4 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
+
 const db = new sqlite3.Database(__dirname + '/bangazonStore.sqlite');
 
 const { employeeTypes } = require('../data/employee-types');
@@ -66,7 +67,7 @@ db.serialize(function() {
 
     // ******* USERs TABLES
     db.run(`CREATE TABLE IF NOT EXISTS users (
-    user_id INTEGER NOT NULL PRIMARY KEY,
+    user_id INTEGER PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
     phone TEXT NOT NULL,
