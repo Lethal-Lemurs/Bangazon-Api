@@ -25,6 +25,7 @@ module.exports = {
         });
     });
   },
+  
   post_one: (new_user) => {
     return new Promise((resolve, reject) => {
       db.run(`INSERT INTO users (first_name, last_name, phone, email, address_street, address_city, address_state, address_zip) VALUES(

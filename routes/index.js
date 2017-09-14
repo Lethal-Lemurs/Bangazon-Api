@@ -17,13 +17,15 @@ router.get('/', (req, res) => {
     res.json({
         "users": "api/v1/users",
         "user by id": "api/v1/users/id",
+        "post new user": "api/v1/users/new",
         // "departments": "api/v1/departments",
         // "computers": "api/v1/computers",
         // "orders": "api/v1/orders",
         // "paymentType": "api/v1/payment-type",
         // "products": "api/v1/products",
         "prodcutType": "api/v1/product-types",
-        "prodcutType by id": "api/v1/product-types/id",        
+        "prodcutType by id": "api/v1/product-types/id",
+        "post new prodcutType": "api/v1/product-types/new",        
         // "trainingProgram": "api/v1/training-program"
     });
 });
