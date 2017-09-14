@@ -32,8 +32,8 @@ module.exports = {
         (err, data) => {
           if (err) return reject(err);
           resolve(data);
-        })
-      })
+        });
+      });
     },
 
   put_one: (id, body) => {
@@ -45,7 +45,17 @@ module.exports = {
       (err, data) => {
         if (err) return reject(err);
         resolve(data);
-      })
-    })
+      });
+    });
+  },
+
+  delete_one: (id) => {
+    return new Promise((resolve, reject) => {
+      db.run(`DELETE FROM productTypes WHERE productType_id = ${id}`, 
+      (err, data) => {
+        if (err) return reject(err);
+        resolve(data);
+      });
+    });
   }
 }
