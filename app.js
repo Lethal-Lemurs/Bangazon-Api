@@ -8,7 +8,6 @@ require('dotenv').config();
 let routes = require('./routes/');
 
 const log_params = (req, res, next) => {
-    console.log("Middleware function awesomeness");
     console.log('req.params', req.params.id);
     console.log('req.url from "logParams"', req.url);
     next();
@@ -24,7 +23,6 @@ app.use((req, res, next) => {
     let err = new ERROR('Whoops');
     err.status = 404;
     next(err)
-
 });
 
 app.use((err, req, res, next) => {
