@@ -27,7 +27,6 @@ module.exports = {
   },
   post_one: (new_user) => {
     return new Promise((resolve, reject) => {
-      console.log("new user", new_user);
       db.run(`INSERT INTO users (first_name, last_name, phone, email, address_street, address_city, address_state, address_zip) VALUES(
         "${new_user.first_name}",
         "${new_user.last_name}",
@@ -35,7 +34,7 @@ module.exports = {
         "${new_user.email}",
         "${new_user.address_street}",
         "${new_user.address_city}",
-        "${new_user.address_state}",
+        "${new_user.address_state}",  
         ${new_user.address_zip})`,
         (err, user) => {
           if (err) return reject(err);

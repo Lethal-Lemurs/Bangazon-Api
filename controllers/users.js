@@ -23,11 +23,9 @@ module.exports.get_one_user = ({ params: { id } }, res, next) => {
 module.exports.post_one_user = ({body}, res, next) => {
     post_one(body) 
         .then((new_user) => {
-            console.log(new_user);
             res.status(201).json(new_user)
         })
         .catch((err ) => { 
-            console.log("getting stuck in catch");
             next(err)
             
 });

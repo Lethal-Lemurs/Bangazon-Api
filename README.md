@@ -1,6 +1,6 @@
 # BangazonAPI
 
-This is an API for Bangazon LLC. This API will allow user to GET/POST/PUT and (sometimes) DELETE items from the Bangazon Database. Before you can utilize the database, there are a few things you need to make sure you have installed. 
+This is an API for Bangazon LLC. This API will allow a user to GET/POST/PUT and DELETE items from the Bangazon Database. Before you can utilize the database, there are a few things you need to make sure you have installed. 
 
 # Installing Core Technologies
 
