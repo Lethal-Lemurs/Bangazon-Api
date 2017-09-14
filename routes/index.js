@@ -25,10 +25,7 @@ router.get('/', (req, res) => {
         // "products": "api/v1/products",
         "prodcutType": "api/v1/product-types",
         "prodcutType by id": "api/v1/product-types/id",
-<<<<<<< HEAD
         "post new prodcutType": "api/v1/product-types/new",        
-=======
->>>>>>> master
         // "trainingProgram": "api/v1/training-program"
     });
 });
