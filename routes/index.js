@@ -4,7 +4,7 @@ const { Router } = require('express');
 const router = Router();
 
 router.use(require('./users-route'));
-// router.use(require('./departments'));
+router.use(require('./department-route'));
 // router.use(require('./computers'));
 // router.use(require('./orders'));
 // router.use(require('./payment-type'));
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
         "users": "api/v1/users",
         "user by id": "api/v1/users/id",
         "post new user": "api/v1/users/new",
-        // "departments": "api/v1/departments",
+        "departments": "api/v1/departments",
         // "computers": "api/v1/computers",
         // "orders": "api/v1/orders",
         // "paymentType": "api/v1/payment-type",
