@@ -23,7 +23,6 @@ app.use((req, res, next) => {
     let err = new ERROR('Whoops');
     err.status = 404;
     next(err)
-
 });
 
 app.use((err, req, res, next) => {
