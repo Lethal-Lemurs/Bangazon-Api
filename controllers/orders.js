@@ -21,7 +21,7 @@ module.exports.get_one_order = ({ params: { id } }, res, next) => {
 };
 
 module.exports.delete_one_order = ({ params: { id } }, res, next) => {
-    remove_one(id)
+    delete_one(id)
         .then((order) => {
             res.status(200).json(order)
         })
