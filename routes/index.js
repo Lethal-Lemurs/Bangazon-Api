@@ -21,6 +21,7 @@ router.get('/', (req, res) => {
         // "computers": "api/v1/computers",
         "orders": "api/v1/orders",
         "orders": "api/v1/orders/delete/id",
+        "orders": "api/v1/orders/replace/id",
         // "paymentType": "api/v1/payment-type",
         // "products": "api/v1/products",
         "prodcutType": "api/v1/product-types",

@@ -42,5 +42,18 @@ module.exports = {
           resolve(order);
         });
     });
+},
+  put_one: (id, body) => {
+    return new Promise((resolve, reject) => {
+      db.run(`DELETE FROM orders WHERE order_id = ${id}`);
+      db.run(`INSERT INTO orders (order_id, order_date, order_status) VALUES(
+        ${id},
+        "${body.order_date}",
+        "${body.order_status}")`,
+      (err, data) => {
+        if (err) return reject(err);
+        resolve(data);
+      });
+    });
 }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-const { get_all, get_one, delete_one, post_one } = require('../models/orders-model.js');
+const { get_all, get_one, delete_one, post_one, put_one } = require('../models/orders-model.js');
 
 module.exports.get_orders = (req, res, next) => {
     get_all()
@@ -35,6 +35,15 @@ module.exports.post_one_order = ({body}, res, next) => {
       })
       .catch((err ) => { 
           next(err)
-          
-});
-}
+      })  
+};
+
+module.exports.put_one_order = (req, res, next) => {
+  put_one(req.params.id, req.body) 
+      .then((updated_order) => {
+          res.status(201).json(updated_order);
+      })
+      .catch((err) => { 
+          next(err)
+      })
+};
