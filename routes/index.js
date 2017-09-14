@@ -8,7 +8,7 @@ router.use(require('./users-route'));
 // router.use(require('./computers'));
 // router.use(require('./orders'));
 // router.use(require('./payment-type'));
-// router.use(require('./products'));
+router.use(require('./products-route'));
 // router.use(require('./product-type'));
 // router.use(require('./training-program'));
 
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
         "orders": "api/v1/orders",
         "paymentType": "api/v1/payment-type",
         "products": "api/v1/products",
-        "prodcutType": "api/v1/prodcut-type",
+        "prodcutType": "api/v1/product-type",
         "trainingProgram": "api/v1/training-program"
     });
 });
