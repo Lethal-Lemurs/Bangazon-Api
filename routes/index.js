@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
     res.json({
         "users": "api/v1/users",
         "user by id": "api/v1/users/id",
+        "post new user": "api/v1/users/new",
         // "departments": "api/v1/departments",
         // "computers": "api/v1/computers",
         // "orders": "api/v1/orders",

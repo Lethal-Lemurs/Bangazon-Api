@@ -29,7 +29,7 @@ sudo dnf install sqlite
 
 ## SQL Browser 
 
-The [DB browser for SQLite](http://sqlitebrowser.org/) will let you view, query and manage your databases.
+The [DB browser for SQLite](http://sqlitebrowser.org/) will let you view, query and manage your databases. Linux users can download this via their package managers.
 
 ## Visual Studio Code
 
@@ -71,3 +71,16 @@ sudo dnf install nodejs
 ### Review Node Documentation
 
 https://nodejs.org/en/docs/
+
+# Installing the Bangazon API
+
+As of now, the database is going to be hosted on your local computer. There are a few things you need to make sure are in place before the database can be up and running.
+ 1. Clone the repo on to you local machine. 
+ 2. Run `npm install`
+ 3. Next Run `npm start` 
+ >This will install all of the necessary packages to get up and running and get your back-end server started.
+
+ ## Using the API
+For now, all calls to the API will be made from `http://localhost:8000` as the domain. All calls will be made from here. 
+>Example: You can get a list of all the users by making a GET call to 
+`http://localhost:8000/api/v1/users/`
