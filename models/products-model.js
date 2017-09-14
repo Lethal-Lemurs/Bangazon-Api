@@ -19,5 +19,14 @@ module.exports = {
                     resolve(product_data);
                 });
         });
+    },
+    remove_one: (id) => {
+        return new Promise((resolve, reject) => {
+            db.run(`DELETE FROM products WHERE product_id = ${id}`,
+                (err, product_data) => {
+                    if (err) return reject(err);
+                    resolve(product_data);
+                });
+        });
     }
 }
