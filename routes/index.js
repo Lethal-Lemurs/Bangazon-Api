@@ -22,10 +22,13 @@ router.get('/', (req, res) => {
         // "computers": "api/v1/computers",
         // "orders": "api/v1/orders",
         // "paymentType": "api/v1/payment-type",
-        // "products": "api/v1/products",
+        "products": "api/v1/products",
+        "products by id": "api/v1/products/id",
+        "post new product": "api/v1/products/new",
+        "put new product": "api/products/replace/id",
         "prodcutType": "api/v1/product-types",
         "prodcutType by id": "api/v1/product-types/id",
-        "post new prodcutType": "api/v1/product-types/new",        
+        "post new prodcutType": "api/v1/product-types/new",
         // "trainingProgram": "api/v1/training-program"
     });
 });
