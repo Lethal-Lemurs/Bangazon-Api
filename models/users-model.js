@@ -15,8 +15,8 @@ module.exports = {
         });
     });
   },
+  
   get_one: (id) => {
-    console.log("id?", id);
     return new Promise((resolve, reject) => {
       db.get(`SELECT * FROM users WHERE user_id = ${id}`,
         (err, user) => {
