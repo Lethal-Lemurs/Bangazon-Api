@@ -2,7 +2,6 @@
 
 const sqlite3 = require('sqlite3').verbose();
 
-//need to require in the database once named
 const db = new sqlite3.Database('./db/bangazonStore.sqlite');
 
 module.exports = {
@@ -35,5 +34,29 @@ module.exports = {
       resolve(computer);
     });
   });
-  }
+  },
+
+  put_one: (id, body) => {
+    return new Promise((resolve, reject) => {
+      db.run(`DELETE FROM computers WHERE computer_id = ${id}`)
+      db.run(`INSERT INTO computers (computer_id, purchased_date, model_number) VALUES(
+        ${id},
+        "${body.purchased_date}", ${body.model_number})`,
+      (err, data) => {
+        if (err) return reject(err);
+        resolve(data);
+      })
+    })
+  },
+
+  remove_one: (id) => {
+    return new Promise((resolve, reject) => {
+        db.run(`DELETE FROM computers WHERE computer_id = ${id}`,
+            (err, computer_data) => {
+                if (err) return reject(err);
+                resolve(computer_data);
+            });
+    });
+}
+
 }
