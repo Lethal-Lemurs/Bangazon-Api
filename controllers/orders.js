@@ -44,6 +44,6 @@ module.exports.put_one_order = (req, res, next) => {
           res.status(201).json(updated_order);
       })
       .catch((err) => { 
-          next(err)
-      })
+          next(err);
+      });
 };

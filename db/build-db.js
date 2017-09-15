@@ -37,7 +37,8 @@ db.serialize(function() {
     db.run(`DROP TABLE IF EXISTS products`);
     db.run(`DROP TABLE IF EXISTS paymentTypes`);
     db.run(`DROP TABLE IF EXISTS orders`);
-
+    db.run(`DROP TABLE IF EXISTS orderProduct`);
+    
     db.run(`CREATE TABLE IF NOT EXISTS employees (
     emp_id INTEGER NOT NULL PRIMARY KEY,
     first_name TEXT NOT NULL,
@@ -104,11 +105,15 @@ db.serialize(function() {
     db.run(`CREATE TABLE IF NOT EXISTS orders (
     order_id INTEGER NOT NULL PRIMARY KEY,
     order_date TEXT NOT NULL,
-    order_status TEXT NOT NULL,
     buyer_id INT NULL,
     paymentType_id TEXT NULL,
       FOREIGN KEY (buyer_id) REFERENCES users(user_id),
       FOREIGN KEY (paymentType_id) REFERENCES paymentTypes(payType_id))`);
+
+    db.run(`CREATE TABLE IF NOT EXISTS orderProduct (
+      order_id INTEGER NULL,
+      product_id INTEGER NULL
+    )`);
 
     employees.forEach(({ first_name, last_name, phone, position_title }) => {
         db.run(`INSERT INTO employees (first_name, last_name, phone, position_title)
@@ -156,8 +161,8 @@ db.serialize(function() {
     VALUES (${account_number})`);
     });
 
-    orders.forEach(({ order_date, order_status }) => {
-        db.run(`INSERT INTO orders (order_date, order_status)
-    VALUES ("${order_date}", "${order_status}")`);
+    orders.forEach(({ order_date }) => {
+        db.run(`INSERT INTO orders (order_date)
+    VALUES ("${order_date}")`);
     });
 });
