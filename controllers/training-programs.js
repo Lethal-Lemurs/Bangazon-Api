@@ -2,7 +2,7 @@
 
 const { get_all, get_one, post_one, update_training_model, delete_one } = require('../models/training-program-model.js');
 //TODO: ensure compatibilty
-module.exports.get_all = (req, res, next) => {
+module.exports.get_all_programs = (req, res, next) => {
   get_all()
     .then((training) => {
       res.status(200).json(training);
@@ -31,8 +31,8 @@ module.exports.post_one_program = ({body}, res, next) => {
     });
 }
 
-module.exports.update_training = (req, res, next) => {
-    update_training_model(req.params.id, req.body)
+module.exports.update_training = ({params: {id} }, res, next) => {
+    update_training_model(id, req.body)
     .then((updated_training) => {
         res.status(200).json(updated_training)
         })
@@ -41,7 +41,7 @@ module.exports.update_training = (req, res, next) => {
         });
 }
 
-module.exports.delete_training = ({params: {id}}, res, next) => {
+module.exports.delete_training = ({params: {id} }, res, next) => {
   delete_one(id)
   .then((training)=>{
     res.status(200).json(training);
