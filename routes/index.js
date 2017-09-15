@@ -10,7 +10,7 @@ router.use(require('./users-route'));
 // router.use(require('./payment-type'));
 router.use(require('./products-route'));
 router.use(require('./product-type-route'));
-// router.use(require('./training-program'));
+router.use(require('./training-program'));
 
 // this should be what a person using the api types in to the url to pull data
 router.get('/', (req, res) => {
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
         "post new prodcutType": "api/v1/product-types/new",
         "replace a productType with put": "/api/v1/product-types/replace/:id",
         "delete a productType by id": "/api/v1/products-types/delete/:id",
-        // "trainingProgram": "api/v1/training-program"
+        "trainingProgram": "api/v1/training-program"
     });
 });
 
