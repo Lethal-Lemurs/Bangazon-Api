@@ -5,7 +5,7 @@ const router = Router();
 
 router.use(require('./users-route'));
 // router.use(require('./departments'));
-// router.use(require('./computers'));
+router.use(require('./computer-route'));
 // router.use(require('./orders'));
 // router.use(require('./payment-type'));
 router.use(require('./products-route'));
@@ -19,7 +19,9 @@ router.get('/', (req, res) => {
         "user by id": "api/v1/users/id",
         "post new user": "api/v1/users/new",
         // "departments": "api/v1/departments",
-        // "computers": "api/v1/computers",
+        "computers": "api/v1/computers",
+        "computer by id": "api/v1/computers/:id",
+        "post new computer": "api/v1/computers/new",
         // "orders": "api/v1/orders",
         // "paymentType": "api/v1/payment-type",
         "products": "api/v1/products",
