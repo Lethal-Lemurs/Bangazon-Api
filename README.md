@@ -48,7 +48,7 @@ https://nodejs.org/en/docs/guides/getting-started-guide/
   4. Create a new file called app.js: 
   5. Paste in the code form the example link at the top of the instructions.
   6. Run the app: node app.js
-  7. Navigate to http://localhost:3000/
+  7. Navigate to http://localhost:8000/api/v1
   8. You should see your 'Hello World' message.
 
 ## Linux
@@ -75,12 +75,13 @@ https://nodejs.org/en/docs/
 # Installing the Bangazon API
 
 As of now, the database is going to be hosted on your local computer. There are a few things you need to make sure are in place before the database can be up and running.
- 1. Clone the repo on to you local machine. 
+ 1. Clone the repo on to your local machine. 
  2. Run `npm install`
- 3. Next Run `npm start` 
+ 3. Then `npm run db:reset` (resets the database) 
+4. Next, run `npm start` 
  >This will install all of the necessary packages to get up and running and get your back-end server started.
 
  ## Using the API
-For now, all calls to the API will be made from `http://localhost:8000` as the domain. All calls will be made from here. 
+All API calls will be made from `http://localhost:8000/api/v1` as the domain. Here you can see the different options you have available.
 >Example: You can get a list of all the users by making a GET call to 
 `http://localhost:8000/api/v1/users/`
