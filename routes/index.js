@@ -24,10 +24,15 @@ router.get('/', (req, res) => {
         "post new computer": "api/v1/computers/new",
         // "orders": "api/v1/orders",
         // "paymentType": "api/v1/payment-type",
-        // "products": "api/v1/products",
+        "products": "api/v1/products",
+        "products by id": "api/v1/products/id",
+        "post new product": "api/v1/products/new",
+        "put new product": "api/products/replace/id",
         "prodcutType": "api/v1/product-types",
         "prodcutType by id": "api/v1/product-types/id",
-        "post new prodcutType": "api/v1/product-types/new",        
+        "post new prodcutType": "api/v1/product-types/new",
+        "replace a productType with put": "/api/v1/product-types/replace/:id",
+        "delete a productType by id": "/api/v1/products-types/delete/:id",
         // "trainingProgram": "api/v1/training-program"
     });
 });
