@@ -31,8 +31,8 @@ module.exports.post_one_program = ({body}, res, next) => {
     });
 }
 
-module.exports.update_training = ({params: {id} }, res, next) => {
-    update_training_model(id, req.body)
+module.exports.update_training = (req, res, next) => {
+    update_training_model(req.params.id, req.body)
     .then((updated_training) => {
         res.status(200).json(updated_training)
         })
