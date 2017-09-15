@@ -13,7 +13,6 @@ module.exports.generateOrders = (orderStatus) => {
 
     orders.push({
       order_date,
-      order_status
     });
   }
 
