@@ -7,7 +7,7 @@ router.use(require('./users-route'));
 // router.use(require('./departments'));
 // router.use(require('./computers'));
 // router.use(require('./orders'));
-// router.use(require('./payment-type'));
+router.use(require('./payment-type-route'));
 router.use(require('./products-route'));
 router.use(require('./product-type-route'));
 // router.use(require('./training-program'));
