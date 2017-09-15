@@ -35,9 +35,9 @@ module.exports = {
     post_one: (products) => {
       return new Promise((resolve, reject) => {
       db.run(`INSERT INTO products (title, price, description) VALUES(
-  "${products.title}",
-  "${products.price}",
-  "${products.description}")`,
+      "${products.title}",
+      "${products.price}",
+      "${products.description}")`,
         (err, data) => {
         if (err) return reject(err);
         resolve(data);
