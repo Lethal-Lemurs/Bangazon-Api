@@ -18,7 +18,7 @@ module.exports = {
   
   get_one: (id) => {
   return new Promise((resolve, reject) => {
-    db.get(`SELECT * FROM employees WHERE employee_id = ${id}`,
+    db.get(`SELECT * FROM employees WHERE emp_id = ${id}`,
     (err, employee) => {
       if (err) return reject(err);
       resolve(employee);

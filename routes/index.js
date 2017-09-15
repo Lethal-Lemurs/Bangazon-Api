@@ -4,13 +4,9 @@ const { Router } = require('express');
 const router = Router();
 
 router.use(require('./users-route'));
-<<<<<<< HEAD
 router.use(require('./employee-route'));
-// router.use(require('./departments'));
-=======
 router.use(require('./department-route'));
->>>>>>> master
-// router.use(require('./computers'));
+router.use(require('./computer-route'));
 router.use(require('./orders-route'));
 // router.use(require('./payment-type'));
 router.use(require('./products-route'));
