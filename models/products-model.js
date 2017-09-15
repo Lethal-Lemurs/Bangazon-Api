@@ -29,6 +29,7 @@ module.exports = {
         if (err) return reject(err);
         resolve(product_data);
       });
+    })
     },
 
     post_one: (products) => {
@@ -54,4 +55,4 @@ module.exports = {
         });
       });
     }
-  };
+    };

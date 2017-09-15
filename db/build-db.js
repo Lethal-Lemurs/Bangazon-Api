@@ -1,5 +1,4 @@
 const sqlite3 = require('sqlite3').verbose();
-
 const db = new sqlite3.Database(__dirname + '/bangazonStore.sqlite');
 
 const { employeeTypes } = require('../data/employee-types');
@@ -61,6 +60,7 @@ db.serialize(function() {
     db.run(`CREATE TABLE IF NOT EXISTS computers (
     computer_id INTEGER NOT NULL PRIMARY KEY,
     purchased_date TEXT NOT NULL,
+    model_number INT NOT NULL,
     decomissioned_date TEXT NULL,
     employee_id INT NULL,
       FOREIGN KEY (employee_id) REFERENCES employees(emp_id) )`);
@@ -125,9 +125,9 @@ db.serialize(function() {
     VALUES ("${start_date}", "${end_date}")`);
     });
 
-    computers.forEach(({ purchased_date }) => {
-        db.run(`INSERT INTO computers (purchased_date)
-    VALUES ("${purchased_date}")`);
+    computers.forEach(({ purchased_date, model_number }) => {
+        db.run(`INSERT INTO computers (purchased_date, model_number)
+    VALUES ("${purchased_date}", ${model_number})`);
     });
 
     // ******* USERs TABLES
