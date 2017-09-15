@@ -54,5 +54,15 @@ module.exports = {
         resolve(data);
       });
     });
+  },
+
+  delete_one: (id) => {
+    return new Promise((resolve, reject) => {
+      db.get(`SELECT * FROM users WHERE user_id = ${id}`,
+        (err, user) => {
+          if (err) return reject(err);
+          resolve(user);
+        });
+    });
   }
 }
