@@ -8,7 +8,7 @@ router.use(require('./employee-route'));
 router.use(require('./department-route'));
 router.use(require('./computer-route'));
 router.use(require('./orders-route'));
-// router.use(require('./payment-type'));
+router.use(require('./payment-type-route'));
 router.use(require('./products-route'));
 router.use(require('./product-type-route'));
 router.use(require('./training-program-route'));
