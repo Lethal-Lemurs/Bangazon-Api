@@ -43,7 +43,6 @@ module.exports = {
     });
   });
   },
-
   update_user_model: (id, body) => {
     return new Promise((resolve, reject) => {
       db.run(`DELETE FROM users WHERE user_id = ${id}`);
@@ -54,5 +53,16 @@ module.exports = {
         resolve(data);
       });
     });
+  },
+
+  delete_one: (id) => {
+    return new Promise((resolve, reject) => {
+      db.get(`SELECT * FROM users WHERE user_id = ${id}`,
+        (err, user) => {
+          if (err) return reject(err);
+          resolve(user);
+        });
+    });
   }
 }
+
