@@ -30,7 +30,7 @@ module.exports = {
         resolve(product_data);
       });
     })
-    },
+  },
 
     post_one: (products) => {
       return new Promise((resolve, reject) => {
@@ -52,7 +52,7 @@ module.exports = {
         (err, data) => {
         if (err) return reject(err);
         resolve(data);
-        });
       });
-    }
-    };
+    });
+  }
+}
