@@ -10,4 +10,5 @@ router.post('/payment-types/new', post_single_payment_type);
 router.put('/payment-types/replace/:id', put_single_payment_type);
 router.delete('/payment-types/delete/:id', delete_single_payment_type);
 
+
 module.exports = router;

@@ -97,8 +97,8 @@ db.serialize(function() {
     db.run(`CREATE TABLE IF NOT EXISTS paymentTypes (
     payType_id INTEGER NOT NULL PRIMARY KEY,
     account_number INT NOT NULL,
-    user_id INT NULL,
-    transactionType_id INT NULL,
+    user_id INT,
+    transactionType_id INT,
       FOREIGN KEY (user_id) REFERENCES users(user_id),
       FOREIGN KEY (transactionType_id) REFERENCES transactionType(tranType_id))`);
 
@@ -161,8 +161,8 @@ db.serialize(function() {
     VALUES (${account_number})`);
     });
 
-    orders.forEach(({ order_date }) => {
-        db.run(`INSERT INTO orders (order_date)
-    VALUES ("${order_date}")`);
-    });
+    // orders.forEach(({ order_date }) => {
+    //     db.run(`INSERT INTO orders (order_date)
+    // VALUES ("${order_date}")`);
+    // });
 });
