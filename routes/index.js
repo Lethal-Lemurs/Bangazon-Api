@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
         "departments": "api/v1/departments",
         "department by id": "api/v1/departments/id",
         "post department": "api/v1/departments/new",
-        "replace a department by id": "api/v1/departments/put/id",
+        "replace a department by id": "api/v1/departments/replace/id",
         "computers": "api/v1/computers",
         "computer by id": "api/v1/computers/:id",
         "post new computer": "api/v1/computers/new",
