@@ -67,7 +67,8 @@ module.exports = {
           if (err) {
             return reject(err);
           }
-      db.run(`INSERT INTO orderProduct VALUES (${this.lastID}, ${new_order.product_id})`, 
+      db.run(`INSERT INTO orderProduct VALUES (
+        ${this.lastID}, ${new_order.product_id})`, 
     function (err) {
       if (err) return reject(err);
       resolve(this.lastID);
