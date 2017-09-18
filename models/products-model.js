@@ -48,7 +48,8 @@ module.exports = {
     put_one: (id, body) => {
       return new Promise((resolve, reject) => {
       db.run(`DELETE FROM products WHERE product_id = ${id}`);
-      db.run(`INSERT INTO products (product_id, title, price, description) VALUES(${id}, "${body.title}", "${body.price}", "${body.description}")`,
+      db.run(`INSERT INTO products (product_id, title, price, description) VALUES(
+        ${id}, "${body.title}", "${body.price}", "${body.description}")`,
         (err, data) => {
         if (err) return reject(err);
         resolve(data);

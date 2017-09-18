@@ -47,7 +47,8 @@ module.exports = {
     put_one: (id, body) => {
       return new Promise((resolve, reject) => {
       db.run(`DELETE FROM paymentTypes WHERE payType_id = ${id}`),
-      db.run(`INSERT INTO paymentTypes (payType_id, account_number, user_id, transactionType_id) VALUES(${id}, ${body.account_number}, ${body.user_id}, ${body.transactionType_id})`,
+      db.run(`INSERT INTO paymentTypes (payType_id, account_number, user_id, transactionType_id) VALUES(
+        ${id}, ${body.account_number}, ${body.user_id}, ${body.transactionType_id})`,
         (err, data) => {
         if (err) return reject(err);
         resolve(data);
