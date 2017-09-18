@@ -40,61 +40,60 @@ module.exports = {
       JOIN orderProduct ON orders.order_id = orderProduct.order_id
       JOIN products ON products.product_id = orderProduct.product_id
       WHERE orders.order_id = ${id}`,
-        (err, cart) => {
-          if (err) return reject(err);
-          let customer_cart = user_cart(cart);
-          if (cart.length) resolve(customer_cart);
-        });
+      (err, cart) => {
+        if (err) return reject(err);
+        let customer_cart = user_cart(cart);
+        if (cart.length) resolve(customer_cart);
+      });
     });
   },
 
   delete_one: (id) => {
     return new Promise((resolve, reject) => {
       db.run(`DELETE FROM orders WHERE order_id = ${id}`,
-        (err, order) => {
-          if (err) return reject(err);
-          resolve(order);
-        });
+      (err, order) => {
+        if (err) return reject(err);
+        resolve(order);
+      });
     });
   },
 
   post_one: (new_order) => {
-    console.log("??", new_order);    
     return new Promise((resolve, reject) => {
       db.run(`INSERT INTO orders (order_date, buyer_id, paymentType_id) VALUES(
-        "${new_order.order_date}", ${new_order.buyer_id}, ${new_order.paymentType_id})`,
-       function (err, order) {
-          if (err) {
-            return reject(err);
-          }
+      "${new_order.order_date}", ${new_order.buyer_id}, ${new_order.paymentType_id})`,
+      function (err, order) {
+        if (err) {
+          return reject(err);
+        }
       db.run(`INSERT INTO orderProduct VALUES (
-        ${this.lastID}, ${new_order.product_id})`, 
-    function (err) {
-      if (err) return reject(err);
-      resolve(this.lastID);
-      })
+      ${this.lastID}, ${new_order.product_id})`, 
+      function (err) {
+        if (err) return reject(err);
+        resolve(this.lastID);
+        })
+      });
     });
-  });
-},
+  },
 
   put_one: (id, body) => {
     return new Promise((resolve, reject) => {
       db.run(`DELETE FROM orders WHERE order_id = ${id}`);
       db.run(`INSERT INTO orders (order_id, order_date, buyer_id, paymentType_id) VALUES(
-        ${id},
-        "${body.order_date}",
-        ${body.buyer_id},
-        ${body.paymentType_id})`,
+      ${id},
+      "${body.order_date}",
+      ${body.buyer_id},
+      ${body.paymentType_id})`,
       function (err, data) {
         if (err) {
           return reject(err);
         }
       db.run(`INSERT INTO orderProduct VALUES (${this.lastID}, ${body.product_id})`,
       function (err) {
-      if (err) return reject(err)
-      resolve(this.lastID);
-      })
+        if (err) return reject(err)
+        resolve(this.lastID);
+        })
+      });
     });
-  });
-}
+  } 
 }
