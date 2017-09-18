@@ -79,10 +79,11 @@ module.exports = {
   put_one: (id, body) => {
     return new Promise((resolve, reject) => {
       db.run(`DELETE FROM orders WHERE order_id = ${id}`);
-      db.run(`INSERT INTO orders (order_id, order_date, paymentType_id) VALUES(
+      db.run(`INSERT INTO orders (order_id, order_date, buyer_id, paymentType_id) VALUES(
         ${id},
         "${body.order_date}",
-        "${body.order_status}")`,
+        ${body.buyer_id},
+        ${body.paymentType_id})`,
       function (err, data) {
         if (err) {
           return reject(err);
