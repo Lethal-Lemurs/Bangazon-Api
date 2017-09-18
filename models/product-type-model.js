@@ -28,20 +28,20 @@ module.exports = {
   post_one: (prod_type) => {
     return new Promise((resolve, reject) => {
       db.run(`INSERT INTO productTypes (type) VALUES(
-        "${prod_type.type}")`,
-        (err, data) => {
-          if (err) return reject(err);
-          resolve(data);
-        });
+      "${prod_type.type}")`,
+      (err, data) => {
+        if (err) return reject(err);
+        resolve(data);
       });
-    },
+    });
+  },
 
   put_one: (id, body) => {
     return new Promise((resolve, reject) => {
       db.run(`DELETE FROM productTypes WHERE productType_id = ${id}`)
       db.run(`INSERT INTO productTypes (productType_id, type) VALUES(
-        ${id},
-        "${body.type}")`,
+      ${id},
+      "${body.type}")`,
       (err, data) => {
         if (err) return reject(err);
         resolve(data);
