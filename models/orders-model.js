@@ -5,7 +5,7 @@ const sqlite3 = require('sqlite3').verbose();
 //need to require in the database once named
 const db = new sqlite3.Database('./db/bangazonStore.sqlite');
 
-let user_cart = (cart, count) => {
+let user_cart = (cart) => {
   let cart_obj = {
     "order_id": cart[0].order_id,
     "buyer_id": cart[0].buyer_id,
