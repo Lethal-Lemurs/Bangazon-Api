@@ -5,7 +5,7 @@ const sqlite3 = require('sqlite3').verbose();
 //need to require in the database once named
 const db = new sqlite3.Database('./db/bangazonStore.sqlite');
 
-let user_cart = (cart) => {
+let user_cart = (cart, count) => {
   let cart_obj = {
     "order_id": cart[0].order_id,
     "buyer_id": cart[0].buyer_id,
@@ -17,8 +17,8 @@ let user_cart = (cart) => {
       "product_id": products.product_id,
       "title": products.title,
       "price": products.price,
-      "quantity": "?"
-    });
+      "quantity": products.quantity
+    });      
   });
   return cart_obj;
 }
@@ -36,10 +36,12 @@ module.exports = {
 
   get_one: (id) => {
     return new Promise((resolve, reject) => {
-      db.all(`SELECT * FROM orders 
-      JOIN orderProduct ON orders.order_id = orderProduct.order_id
-      JOIN products ON products.product_id = orderProduct.product_id
-      WHERE orders.order_id = ${id}`,
+      db.all(`SELECT *, COUNT(orderProduct.product_id) AS quantity
+              FROM orderProduct  
+              JOIN products 
+              WHERE orderProduct.order_id = ${id}
+              AND orderProduct.product_id = products.product_id
+              GROUP BY orderProduct.product_id`,
       (err, cart) => {
         if (err) return reject(err);
         let customer_cart = user_cart(cart);

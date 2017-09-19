@@ -161,8 +161,4 @@ db.serialize(function() {
     VALUES (${account_number})`);
     });
 
-    orders.forEach(({ order_date }) => {
-        db.run(`INSERT INTO orders (order_date)
-    VALUES ("${order_date}")`);
-    });
 });
