@@ -4,14 +4,13 @@ const sqlite3 = require('sqlite3').verbose();
 const moment = require('moment');
 //need to require in the database once named
 const db = new sqlite3.Database('./db/bangazonStore.sqlite');
-var DATE_RFC2822 = "ddd, DD MMM YYYY HH:mm:ss ZZ";
+let DATE_RFC2822 = "ddd, DD MMM YYYY HH:mm:ss ZZ";
 
 
 let get_date = (id) => {
   return new Promise((resolve,reject)=>{
     db.get(`SELECT start_date FROM programs WHERE program_id = ${id}`, (err, date)=>{
       if(err) {
-        console.log(`error from model`, err);
         return reject (err)
       }
       resolve(date) 
@@ -69,8 +68,6 @@ module.exports = {
     return new Promise((resolve, reject) => {
       get_date(id)
       .then((date)=>{
-        console.log(moment().isBefore(date.start_date))
-        console.log("today", moment(), "date", date.start_date);
         if(moment().isBefore(date.start_date)===true){
           db.run(`DELETE FROM programs WHERE program_id = ${id}`, 
           (err, data) => {
