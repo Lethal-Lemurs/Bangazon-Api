@@ -204,7 +204,7 @@ All API calls will be made from `http://localhost:8000/api/v1` as the domain. He
     * Running a Put requires that you submit the entire object.
     * Example: `{ "purchased_date": "Tue, 19 Sep 2011 09:55:08 -0500", "decomissioned_date": "Tue, 19 Sep 2016 012:30:11 -0500", "model_number": 52234, "employee_id": 2 }`
 
-* DELETE You can delete a computer by running a Delete call to `http://localhost:8000/api/v1/computers/delete{computerID}`
+* DELETE You can delete a computer by running a Delete call to `http://localhost:8000/api/v1/computers/delete/{computerID}`
 
 * POST You can enter a new computer by running a Post call to `http://localhost:8000/api/v1/computers`
     * You must have the same data as a Post.
@@ -220,7 +220,7 @@ All API calls will be made from `http://localhost:8000/api/v1` as the domain. He
     * Running a Put requires that you submit the entire object.
     * Example: `{ "start_date": "Tue, 19 Sep 2011 09:55:08 -0500", "end_date": "Tue, 19 Sep 2016 09:55:08 -0500", "max_attendees": 50 }`
 
-* DELETE You can delete a training program by running a Delete call to `http://localhost:8000/api/v1/trainingprograms/delete{trainingprogramID}`
+* DELETE You can delete a training program by running a Delete call to `http://localhost:8000/api/v1/trainingprograms/delete/{trainingprogramID}`
 >Note: You can only delete a training program if the current date is before the start date of a program. You cannot delete programs that have already happened. 
 
 * POST You can enter a new training program by running a Post call to `http://localhost:8000/api/v1/trainingPrograms/new`
