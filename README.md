@@ -164,7 +164,6 @@ All API calls will be made from `http://localhost:8000/api/v1` as the domain. He
 
 * POST You can enter a new order by running a Post call to `http://localhost:8000/api/v1/orders/new`
     * This requires all the same data as a Put.
-    * The order_date field is auto-generated with the current date.
 ### Employees
 
 * GET You can access a list of all employees by running a Get call to `http://localhost:8000/api/v1/employees`
