@@ -8,6 +8,6 @@ const { get_departments, get_one_department, post_one_department, update_departm
 router.get('/departments', get_departments);
 router.get('/departments/:id', get_one_department);
 router.post('/departments/new', post_one_department);
-router.put('/departments/put/:id', update_department);
+router.put('/departments/replace/:id', update_department);
 
 module.exports = router;

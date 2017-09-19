@@ -4,12 +4,10 @@ const { get_all, get_one, post_one, put_one, delete_one } = require('../models/p
 
 module.exports.get_product_types = (req, res, next) => {
   get_all()
-    .then((data) => {
-      res.status(200).json(data);
-    })
-    .catch((err) => {
-      next(err);
-    })
+  .then((data) => {
+    res.status(200).json(data);
+  })
+  .catch((err) => next(err));  
 };
 
 module.exports.get_single_product_type = ({ params: { id } }, res, next) => {  
@@ -17,9 +15,7 @@ module.exports.get_single_product_type = ({ params: { id } }, res, next) => {
   .then((data) => {
     res.status(200).json(data);
   })
-  .catch((err) => {
-    next(err);
-  })
+  .catch((err) => next(err));  
 };
 
 module.exports.post_single_product_type = ({body}, res, next) => {
@@ -27,9 +23,7 @@ module.exports.post_single_product_type = ({body}, res, next) => {
   .then((prod_type) => {
     res.status(201).json(prod_type);
   })
-  .catch((err) => {
-    next(err);
-  })
+  .catch((err) => next(err));  
 };
 
 module.exports.put_single_product_type = (req, res, next) => {
@@ -37,9 +31,7 @@ module.exports.put_single_product_type = (req, res, next) => {
   .then((updated_prod_type) => {
     res.status(200).json(updated_prod_type);
   })
-  .catch((err) => {
-    next(err);
-  })
+  .catch((err) => next(err));  
 };
 
 module.exports.delete_single_product_type = ({ params: { id } }, res, next) => {
@@ -47,7 +39,5 @@ module.exports.delete_single_product_type = ({ params: { id } }, res, next) => {
   .then((prod_type) => {
     res.status(200).json(prod_type);
   })
-  .catch((err) => {
-    next(err);
-  })
+  .catch((err) => next(err));  
 };
