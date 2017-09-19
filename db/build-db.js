@@ -105,8 +105,8 @@ db.serialize(function() {
     db.run(`CREATE TABLE IF NOT EXISTS orders (
     order_id INTEGER NOT NULL PRIMARY KEY,
     order_date TEXT NOT NULL,
-    buyer_id INT NULL,
-    paymentType_id TEXT NULL,
+    buyer_id INTEGER NULL,
+    paymentType_id INTEGER NULL,
       FOREIGN KEY (buyer_id) REFERENCES users(user_id),
       FOREIGN KEY (paymentType_id) REFERENCES paymentTypes(payType_id))`);
 
