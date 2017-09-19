@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
         "users": "api/v1/users",
         "user by id": "api/v1/users/id",
         "post new user": "api/v1/users/new",
-        "replace a user with put": "api/v1/replace/id",
+        "replace a user": "api/v1/users/replace/id",
         "orders": "api/v1/orders",
         "order by id": "api/v1/orders/id",
         "post order": "api/v1/orders/new",
